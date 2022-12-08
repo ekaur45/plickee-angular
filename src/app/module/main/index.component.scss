@@ -1,0 +1,101 @@
+body,button,input,select,textarea{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%}body{overflow-x:hidden}.demo-btn{-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0)}
+.swiper-button-next, .swiper-button-prev {
+  display: none;
+}
+.arrow-next:focus, .arrow-previous:focus {
+outline: none;
+}
+.swiper-slide.swiper-slide-active .card{
+  opacity: 100%;
+}
+.submit-button:focus {
+    outline: none;
+}
+.text-field {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+}
+.blue-span{
+background: linear-gradient(120.26deg, #E9E9E9 -6.72%, rgba(184, 184, 184, 0.56) 96.96%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-fill-color: transparent;
+mix-blend-mode: screen;
+opacity: 0.8;
+text-shadow: -8px 4px 4px rgba(30, 5, 6, 0.15);
+}
+.spa{
+background: linear-gradient(121.09deg, #16BEFB 18.67%, rgba(2, 139, 189, 0.71) 85.85%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-fill-color: transparent;
+mix-blend-mode: screen;
+opacity: 0.8;
+text-shadow: -8px 4px 4px rgba(30, 5, 6, 0.15);
+}
+
+
+.line{
+background: linear-gradient(180deg, #11A4D9 0%, #0C6790 100%);
+border-radius: 1px;
+}
+
+
+.h1{
+letter-spacing: 0.02em;
+background: linear-gradient(180deg, #F9F9F9 0%, rgba(239, 239, 239, 0.7) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-fill-color: transparent;
+mix-blend-mode: screen;
+text-shadow: -8px 4px 4px rgba(30, 5, 6, 0.15);
+}
+.span-h1{
+letter-spacing: 0.06em;
+background: linear-gradient(180deg, #0B9ED3 13.91%, rgba(0, 194, 255, 0) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-fill-color: transparent;
+mix-blend-mode: screen;
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+.sm-text{
+color: #94A3B8;
+mix-blend-mode: normal;
+text-shadow: -8px 4px 4px rgba(30, 5, 6, 0.15);
+}
+
+
+.text-block{
+background: linear-gradient(90deg, #0DA1D6 -16.67%, #045776 123.11%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-fill-color: transparent;
+mix-blend-mode: screen;
+text-shadow: -8px 4px 4px rgba(30, 5, 6, 0.15);
+}
+
+
+.Imd-Div{
+background: linear-gradient(99.87deg, #E8B222 -1.06%, #C89407 101.06%);
+border-radius: 3px;
+}
+
+
+.slider-text{
+background: linear-gradient(180deg, #F9F9F9 0%, rgba(232, 232, 232, 0.6) 86.11%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-fill-color: transparent;
+mix-blend-mode: screen;
+text-shadow: -8px 4px 4px rgba(30, 5, 6, 0.15);
+}

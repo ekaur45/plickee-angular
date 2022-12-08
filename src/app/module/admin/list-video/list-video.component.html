@@ -1,0 +1,19 @@
+<div class="row">
+    <h4 class="col-md-12" style="    background: -webkit-linear-gradient(#00BBFF, #E8E8E8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent">Movies</h4>
+    <div class="col-md-3 mb-3" *ngFor="let v of videos">
+        <div class="card">
+            <div class="card-body w-100">
+                <button (click)="onDeleteClick(v.id)" class="btn btn-icon position-absolute" style="right: 20px;background: #0000006b;color: white;"><i  class="bi-trash"></i></button>
+                <img class="w-100" [src]="this.assetsUrl+v.thumbnail.filePath" alt="" style="height: 180px">
+                <h5>2021</h5>
+                <p>{{v.description}} </p>
+                <div class="d-flex">
+                    <button class="btn btn-primary w-50"><i class="bi-plus-lg"></i> Add Link</button>
+                    <button class="btn btn-default ml-2 w-50"><i class="bi-eye-slash"></i>Censorship</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

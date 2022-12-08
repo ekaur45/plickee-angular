@@ -1,0 +1,82 @@
+<form class="row" #f="ngForm" (ngSubmit)="onFormSubmit(f)">
+    <h4 class="col-md-12" style="    background: -webkit-linear-gradient(#00BBFF, #E8E8E8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent">Add Video</h4>
+    <div class="col-md-6">
+        <div class="input-wrapper">
+            <input type="text" class="form-control" placeholder="Title:" name="title" [(ngModel)]="model.title">
+        </div>
+        <div class="input-wrapper">
+            <input type="file" class="form-control" placeholder="Upload Thumbnail" (change)="onThumbnailChange($event)">
+        </div>
+        <div class="row">
+            <div class="col-md-4 ">
+                <div class="input-wrapper">
+                    <select name="category" class="form-control" [(ngModel)]="model.category">
+                        <option value="1">Comedy</option>
+                        <option value="2">Crime</option>
+                        <option value="3">Drama</option>
+                        <option value="4">Horor</option>
+                        <option value="5">Romance</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-wrapper">
+                    <select name="quality" class="form-control" [(ngModel)]="model.quality">
+                        <option value="1">FullHD</option>
+                        <option value="1">HD</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-wrapper">
+                    <input type="number" name="releaseYear" class="form-control" [(ngModel)]="model.releaseYear">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-wrapper">
+                    <textarea name="description" class="form-control" rows="10" placeholder="Description" [(ngModel)]="model.description"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 ">
+                <div class="input-wrapper">
+                    <select name="language" class="form-control" [(ngModel)]="model.language">
+                        <option value="1">English</option>
+                        <option value="2">Urdu</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-wrapper">
+                    <input type="number" name="duration" class="form-control" [(ngModel)]="model.duration">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="file-upload-control w-100 d-flex justify-content-center align-items-center flex-column">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                <path
+                    d="M51.25 25.475H44.025C38.1 25.475 33.275 20.65 33.275 14.725V7.5C33.275 6.125 32.15 5 30.775 5H20.175C12.475 5 6.25 10 6.25 18.925V41.075C6.25 50 12.475 55 20.175 55H39.825C47.525 55 53.75 50 53.75 41.075V27.975C53.75 26.6 52.625 25.475 51.25 25.475ZM28.825 33.825C28.45 34.2 27.975 34.375 27.5 34.375C27.025 34.375 26.55 34.2 26.175 33.825L24.375 32.025V42.5C24.375 43.525 23.525 44.375 22.5 44.375C21.475 44.375 20.625 43.525 20.625 42.5V32.025L18.825 33.825C18.1 34.55 16.9 34.55 16.175 33.825C15.45 33.1 15.45 31.9 16.175 31.175L21.175 26.175C21.35 26.025 21.525 25.9 21.725 25.8C21.775 25.775 21.85 25.75 21.9 25.725C22.05 25.675 22.2 25.65 22.375 25.625C22.45 25.625 22.5 25.625 22.575 25.625C22.775 25.625 22.975 25.675 23.175 25.75C23.2 25.75 23.2 25.75 23.225 25.75C23.425 25.825 23.625 25.975 23.775 26.125C23.8 26.15 23.825 26.15 23.825 26.175L28.825 31.175C29.55 31.9 29.55 33.1 28.825 33.825Z"
+                    fill="#94A3B8" />
+                <path
+                    d="M43.575 22.0262C45.95 22.0512 49.25 22.0512 52.075 22.0512C53.5 22.0512 54.25 20.3762 53.25 19.3762C49.65 15.7512 43.2 9.2262 39.5 5.5262C38.475 4.5012 36.7 5.2012 36.7 6.6262V15.3512C36.7 19.0012 39.8 22.0262 43.575 22.0262Z"
+                    fill="#94A3B8" />
+            </svg>
+            <div class="d-flex">
+                <p>Drag & drop files or </p> <a class="ml-2 text-primary">Browse</a>
+            </div>
+            <input type="file" (change)="onVideoChange($event)" accept="video/mp4,video/x-m4v,video/*" />
+            <p>Support MP4,Mov and doc MVW</p>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <button class="btn btn-primary">Submit</button>
+        <button class="btn btn-default ml-3">Cancel</button>
+    </div>
+</form>

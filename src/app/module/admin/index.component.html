@@ -1,0 +1,55 @@
+<div class="admin-navigation">
+    <nav class="admin-nav p-3">
+        <div class="admin-nav-left"></div>
+        <div class="admin-nav-right">
+            <div class="search ml-3">
+                <input type="text" class="form-control">
+            </div>
+            <div class="theme-mode ml-3">
+                <span>Change</span>
+            </div>
+            <div class="account-info ml-3">
+                <span>account</span>
+            </div>
+        </div>
+    </nav>
+    <aside class="admin-aside">
+        <ul class="admin-menu">
+            <li routerLink="/home" routerLinkActive="active">
+                <a>
+                    Visit Site
+                    <i class="bi-arrow-right-short" style="font-size: 24px;"></i>
+                </a>
+            </li>
+            <li>
+
+                <a>
+                    <i class="bi-ui-checks-grid"></i>
+                    Dashboard</a>
+            </li>
+            <li routerLink="/admin/logs" routerLinkActive="active">
+                <a>
+                    <i class="bi-calendar-x"></i>
+                    Logs
+                </a>
+            </li>
+            <li routerLink="/admin/add-video" routerLinkActive="active">
+                <a>
+                    <i class="bi-plus-square"></i>
+                    Add Video
+                </a>
+            </li>
+            <li routerLink="/admin/list-video" routerLinkActive="active">
+                <a>
+                    <i class="bi-plus-square"></i>
+                    List Video
+                </a>
+            </li>
+
+
+        </ul>
+    </aside>
+    <section class="content">
+        <router-outlet></router-outlet>
+    </section>
+</div>

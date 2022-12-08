@@ -1,0 +1,110 @@
+<section class="sign-in-page" style="display: none">
+   <div class="container">
+      <div class="row justify-content-center align-items-center height-self-center">
+         <div class="col-lg-5 col-md-12 align-self-center">
+            <div class="sign-user_card ">
+               <div class="sign-in-page-data">
+                  <div class="sign-in-from w-100 m-auto">
+                     <h3 class="mb-3 text-center">Sign in</h3>
+                     <form class="mt-4" #f="ngForm" (ngSubmit)="f.valid&&onLoginClick()">
+                        <div class="form-group">
+                           <input type="email" name="email" [(ngModel)]="model.email" required class="form-control mb-0"
+                              id="exampleInputEmail1" placeholder="Enter email" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                           <input type="password" [(ngModel)]="model.password" required name="password"
+                              class="form-control mb-0" id="exampleInputPassword2" placeholder="Password" required>
+                        </div>
+
+                        <div class="sign-info">
+                           <button type="submit" class="btn btn-hover">Sign in</button>
+                           <div class="custom-control custom-checkbox d-inline-block">
+                              <input type="checkbox" class="custom-control-input" id="customCheck">
+                              <label class="custom-control-label" for="customCheck">Remember Me</label>
+                           </div>
+                        </div>
+
+                     </form>
+                  </div>
+               </div>
+               <div class="mt-3">
+                  <div class="d-flex justify-content-center links">
+                     Don't have an account? <a routerLink="/account/create" class="text-primary ml-2">Sign Up</a>
+                  </div>
+                  <div class="d-flex justify-content-center links">
+                     <a href="reset-password.html" class="f-link">Forgot your password?</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<div class="signup-hero-section wf-section">
+   <div class="signup-grid">
+      <div id="w-node-_1dffa489-0ffb-0a4d-f604-84daab8e32cd-d63511c3" class="create-div"><img
+            src="images/Asset-24x-8.png" loading="lazy"
+            srcset="images/Asset-24x-8.png 500w, images/Asset-24x-8.png 898w"
+            sizes="(max-width: 479px) 116.0625px, (max-width: 767px) 24vw, 130px" alt="" class="logo">
+         <div class="w-embed">
+            <style>
+               .h2 {
+                  background: linear-gradient(180deg, #0B9ED3 0%, rgba(232, 232, 232, 0.6) 86.11%);
+                  -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;
+                  background-clip: text;
+                  text-fill-color: transparent;
+                  mix-blend-mode: screen;
+                  text-shadow: -8px 4px 4px rgba(30, 5, 6, 0.15);
+               }
+
+               .h2-lg {
+                  color: #0B9ED3;
+                  mix-blend-mode: screen;
+                  text-shadow: -8px 4px 4px rgba(30, 5, 6, 0.15);
+               }
+
+               .input-text {
+                  color: #94A3B8;
+                  mix-blend-mode: screen;
+                  text-shadow: -8px 4px 4px rgba(30, 5, 6, 0.15);
+               }
+            </style>
+         </div>
+         <h1 class="h2">Log In to watch on <br>Plickee</h1>
+      </div>
+      <div id="w-node-_85320b86-ad80-d49d-0e32-6c1f977948d4-d63511c3" class="form-div">
+         <h2 class="h2-lg">Sign In</h2>
+         <div class="form-block-2 w-form">
+            <form id="email-form" name="email-form" data-name="Email Form" #f="ngForm" (ngSubmit)="f.valid&&onLoginClick()">
+               <label for="name"
+                  class="input-text">Email</label>
+                  <input type="email" class="sign-input email w-input" maxlength="256"
+                  name="email" data-name="email" placeholder="Johndoe@gmail.com" id="name" [(ngModel)]="model.email" required="">
+                  <!-- <input type="email" name="email" [(ngModel)]="model.email" required lass="sign-input email w-input"
+                              id="exampleInputEmail1" placeholder="Enter email" autocomplete="off" required> -->
+               <div>
+                  <label for="name-2" class="input-text">Password</label>
+                  <input type="password"
+                     class="sign-input psd w-input" [(ngModel)]="model.password" required maxlength="256" name="name-2" data-name="Name 2"
+                     placeholder="****************" id="name-2"><label for="name-3" class="input-text forgot">Forgot
+                     Passowrd?</label></div>
+               <div class="agree-div">
+                  <div class="agree-circle"></div><label for="email-3" class="input-text terms">Remember Me</label>
+               </div>
+               <div class="button-div"><input type="submit" value="Sign In" data-wait="Please wait..."
+                     class="submit-btn w-button"></div><label for="email-3" class="input-text already">Don’t have an
+                  account?
+                  <a href="#" class="input-text">Sign Up</a></label>
+            </form>
+            <div class="w-form-done">
+               <div>Thank you! Your submission has been received!</div>
+            </div>
+            <div class="w-form-fail">
+               <div>Oops! Something went wrong while submitting the form.</div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
