@@ -1,70 +1,38 @@
-<div class="container">
+<div class="container-fluid">
+ <div class="position-relative video-container w-100" *ngIf="_video">
     <video #playerVideo >
         <source
-            src="https://uploads-ssl.webflow.com/63652c30b17f1b5d0087b191/63824d40e52e4456f898b963_Harry Potter 20th Anniversary_ Return to Hogwarts _ Official Trailer _ HBO Max-transcode.mp4"
-            data-wf-ignore="true">
+            [src]="baseUrl+_video?.video?.filePath"
+            >
     </video>
-    <div class="play-icons-div absolute">
-        <div class="progress-bar-div"><img src="images/Group-3295.png" loading="lazy"
-                srcset="images/Group-3295-p-500.png 500w, assets/images/Group-3295.png 1248w"
-                sizes="(max-width: 1248px) 100vw, (max-width: 1439px) 1248px, 100vw" alt="" class="progess-bar"></div>
-        <div class="bottom-icons-div">
-            <div class="left-icons-div">
-                <a (click)="playClick()" class="playbutton-div w-inline-block">
-                    
-                    <img src="assets/images/Group-3285_1.png" loading="lazy"
-                        alt="" class="play-button" *ngIf="!videoPlayer.isPlaying">
-                    </a>
-                    <span *ngIf="videoPlayer.isPlaying" (click)="pauseClick()">Pause</span>
-                <a href="#" class="nextbutton-div w-inline-block"><img src="assets/images/Group-3289_1.png" loading="lazy"
-                        alt="" class="play-button"></a>
-                <a href="#" class="volumebutton-div w-inline-block"><img src="assets/images/Group-3287_1.png" loading="lazy"
-                        alt="" class="volume-button"></a>
+    <div class="hover-links">
+        <div *ngFor="let l of filteredLinks">
+            <a [href]="l.link">Some click here</a>
+        </div>
+    </div>
+    <div class="position-absolute video-cover w-100" (click)="playPause()"></div>
+    <div class="control position-absolute w-100">
+        <div class="video-progress">
+            <input type="range" class="form-range w-100 bar" min="0" max="100" (mousedown)="onBarMouseDown()" (mouseup)="onBarMouseUp()" (click)="onBarChange($event)" id="customRange1" [value]="(videoPlayer.timer*100)/videoPlayer.totalTime">
+            <!-- <div class="bar"  [ngStyle]="{'width':((videoPlayer.timer*100)/videoPlayer.totalTime)+'%'}"></div> -->
+        </div>
+        <div class="video-controls d-flex justify-content-between">
+            <div class="pp-control mt-3 d-flex">
+                <div class="play-pause">
+                    <i class="bi bi-pause" (click)="pauseClick()" *ngIf="videoPlayer.isPlaying"></i>
+                    <i class="bi bi-play" (click)="playClick()" *ngIf="!videoPlayer.isPlaying"></i>
+                </div>
+                <div class="video-timer">
+                    {{videoPlayer.timer | timeFormat}} / {{videoPlayer.totalTime | timeFormat}} 
+                </div>
+                <div class="volume"></div>
             </div>
-            <div class="censor-div">
-                <div class="censor-text">Censorship  </div>
-                <a href="#" data-ix="toggle" class="togglebutton w-inline-block">
-                    <div data-ix="toggle" class="togglebuttongreen"></div>
-                    <div data-w-id="145b5761-11c9-dd02-ea60-cfdc6afc6f54" class="buttontoggle"></div>
-                    <div class="buttontext-off">Off</div>
-                </a>
-            </div>
-            <div class="right-icons-div">
-                <a href="#" class="settinglinkblock w-inline-block"><img src="assets/images/Group-3290_1.png" loading="lazy"
-                        alt="" class="setting-icon"></a>
-                <a href="#" class="settinglinkblock w-inline-block"><img src="assets/images/Rectangle-28_1.png" loading="lazy"
-                        alt="" class="box-icon"></a>
-                <a href="#" class="settinglinkblock w-inline-block"><img src="assets/images/Group-3291_1.png" loading="lazy"
-                        alt="" class="fullscreen-icon"></a>
+            <div class="censor-ship"></div>
+            <div class="video-mode">
+                <i class="bi bi-fullscreen-exit" *ngIf="videoPlayer.isFullScreen" (click)="requestFullScreen()"></i>  
+                <i class="bi bi-fullscreen" *ngIf="!videoPlayer.isFullScreen" (click)="requestFullScreen()"></i>  
             </div>
         </div>
     </div>
-</div>
-<div class="full-screen-video wf-section">
-    <div class="full-video w-background-video w-background-video-atom">
-        <!-- <span style="position: absolute;
-        top: 553px;
-        left: 80px;
-        z-index: 101;">{{videoPlayer.timer | timeFormat}} / {{videoPlayer.totalTime | timeFormat}}</span> -->
-        <video #playerVideo >
-            <source
-                src="https://uploads-ssl.webflow.com/63652c30b17f1b5d0087b191/63824d40e52e4456f898b963_Harry Potter 20th Anniversary_ Return to Hogwarts _ Official Trailer _ HBO Max-transcode.mp4"
-                data-wf-ignore="true">
-        </video>
-    </div>
-    <!-- <div data-w-id="f18f0539-a44f-08f3-fc00-855e8edfe925" class="hover-box hover-box2"><img
-            src="images/Rectangle-34624887.png" loading="lazy" alt="" class="img-tower">
-        <div>
-            <div class="tower-text">Rolls-Royce</div>
-            <div class="img-detail-text">A white 2016 model Rolls-Royce</div>
-        </div><img src="images/Vector-19.png" loading="lazy" alt="" class="heart-img">
-    </div>
-    <div data-w-id="0e5c46c2-21c0-5435-9859-26b0cbe749bd" class="hover-box"><img src="images/Rectangle-34624890.png"
-            loading="lazy" alt="" class="img-tower">
-        <div>
-            <div class="tower-text">Cayan Towers</div>
-            <div class="img-detail-text">Located in Dubai Marina, United Arab Emirates, UAE</div>
-        </div><img src="images/Vector-19.png" loading="lazy" alt="" class="heart-img">
-    </div> -->
-    
+ </div>
 </div>

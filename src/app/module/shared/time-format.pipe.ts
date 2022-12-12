@@ -6,6 +6,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TimeFormatPipe implements PipeTransform {
 
   transform(value: number, ...args: unknown[]): unknown {
+    var sec_num = parseInt(value+"", 10)
+    var hours   = Math.floor(sec_num / 3600)
+    var minutes = Math.floor(sec_num / 60) % 60
+    var seconds = sec_num % 60
+
+    return [hours,minutes,seconds]
+        .map(v => v < 10 ? "0" + v : v)
+        .filter((v,i) => v !== "00" || i > 0)
+        .join(":")
     value = Number(value);
 var d = Math.floor(value / (3600*24));
 var h = Math.floor(value % (3600*24) / 3600);
