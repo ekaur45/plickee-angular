@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-12 mb-3">
+            <select [(ngModel)]="type" class="form-control">
+                <option value="1">Audio</option>
+                <option value="2">Video</option>
+            </select>
+            
+        </div>
+    </div>
+    <form #f="ngForm" class="row" (ngSubmit)="onFormSubmit(f)">
+        <div class="col-md-4 mb-3">
+            <input name="from" [(ngModel)]="model.from" type="number" class="form-control">
+        </div>
+        <div class="col-md-4 mb-3">
+            <input name="to" [(ngModel)]="model.to" type="number" class="form-control">
+        </div>
+        <div class="col-md-12 mb-3">
+            <div class="btn btn-primary">Video censor</div>
+            <button class="btn btn-default ml-3" type="submit">Add to list</button>
+        </div>
+    </form>
+    <div class="row">
+        <table class="table table-striped text-white">
+            <tr>
+                <th>Sr No</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Video ID</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngFor="let l of list;let ndx = index;">
+                <td>
+                    {{(ndx+1)}}
+                </td>
+                <td>
+                    {{l.from}}
+                </td>
+                <td>
+                    {{l.to}}
+                </td>
+                <td>
+                    {{id}}
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="row"><div class="col-md-12 mb-3">
+        <button class="btn btn-default ml-3" (click)="onSubmitAll()">Submit</button>
+    </div></div>
+</div>

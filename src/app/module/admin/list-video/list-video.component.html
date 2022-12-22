@@ -11,7 +11,7 @@
                 <p>{{v.description}} </p>
                 <div class="d-flex">
                     <button class="btn btn-primary w-50"><i class="bi-plus-lg"></i> Add Link</button>
-                    <button class="btn btn-default ml-2 w-50"><i class="bi-eye-slash"></i>Censorship</button>
+                    <a [href]="['/admin/add-censor/'+v.id]" class="btn btn-default ml-2 w-50"><i class="bi-eye-slash"></i>Censorship</a>
                 </div>
             </div>
         </div>

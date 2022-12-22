@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from 'src/app/utils/admin.guard';
+import { AddCensorComponent } from './add-censor/add-censor.component';
+import { AddLinksComponent } from './add-links/add-links.component';
 import { AddVideoComponent } from './add-video/add-video.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { IndexComponent } from './index.component';
@@ -17,6 +19,13 @@ const routes: Routes = [{
     },
     {
       path:'list-video',component:ListVideoComponent,canActivate: [AdminGuard]
+    },
+
+    {
+      path:'add-censor/:id',component:AddCensorComponent,canActivate: [AdminGuard]
+    },
+    {
+      path:'add-links/:id',component:AddLinksComponent,canActivate: [AdminGuard]
     },
 
     {

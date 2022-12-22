@@ -37,7 +37,8 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "src/assets/js/webflow.js"
+              "src/assets/js/webflow.js",
+              "src/assets/js/video.min.js"
             ]
           },
           "configurations": {

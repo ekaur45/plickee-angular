@@ -17,7 +17,8 @@ import { TimeFormatPipe } from './time-format.pipe';
     HttpClientModule,
     FormsModule,
     MatListModule,
-    MatSidenavModule
+    MatSidenavModule,
+
   ],
   exports:[FormsModule,HttpClientModule,MatListModule,MatSidenavModule,TimeFormatPipe],
   providers:[ApiService,{

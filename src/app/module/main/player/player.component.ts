@@ -10,10 +10,12 @@ import { VideoPlayer } from './video-model';
   styleUrls: ['./player.component.scss']
 })
 export class PlayerComponent implements OnInit, AfterViewInit {
+  isBlur = false;
   baseUrl = environment.baseUrl;
   @ViewChild('playerVideo', { static: false }) video?: ElementRef<HTMLVideoElement>;
   filteredLinks:any[] = [];
   links:any[] = []
+  censors:any[] = []
   id = 0;
   videoPlayer: VideoPlayer;
   _video:any;
@@ -39,6 +41,7 @@ export class PlayerComponent implements OnInit, AfterViewInit {
     this.api.getCall("video/video/"+this.id).subscribe((x:any)=>{
       this.initialize();
       this.getLinks()
+      this.getVideoCensor()
       this._video = x.data;
       this.runTimer()
     })
@@ -46,6 +49,11 @@ export class PlayerComponent implements OnInit, AfterViewInit {
   getLinks(){
     this.api.getCall("video/video-segments/"+this.id).subscribe((x:any)=>{
       this.links = x.data;
+    })
+  }
+  getVideoCensor(){
+    this.api.getCall("video/get-censor/"+this.id+"/video").subscribe((x:any)=>{
+      this.censors = x.data;
     })
   }
   initialize() {
@@ -98,14 +106,25 @@ export class PlayerComponent implements OnInit, AfterViewInit {
   }
   runTimer() {
     if (this.video && this.video.nativeElement) {
-      // if (this.videoPlayer.isPlaying)
+      if (this.videoPlayer.isPlaying){
       this.videoPlayer.totalTime = this.video.nativeElement.duration;
         this.videoPlayer.timer = this.video.nativeElement.currentTime;
         this.videoPlayer.isPlaying = !this.video.nativeElement.paused;
-        let filtered =  this.links.filter(x=>x.from<=this.videoPlayer.timer&&x.to>=this.videoPlayer.timer);
+        let filtered =  this.links.filter(x=>x.from<=this.videoPlayer.timer&&x.end>=this.videoPlayer.timer);
+        if(filtered.length>0){
+          debugger
+        }
         if(JSON.stringify(filtered)!=JSON.stringify(this.filteredLinks)){
+          debugger
           this.filteredLinks = filtered;
         }
+
+        let filteredCensor =  this.censors.filter(x=>x.from<=this.videoPlayer.timer&&x.to>=this.videoPlayer.timer);
+        if(filteredCensor.length>0){
+          console.log("blurred");
+        }
+        this.isBlur = filteredCensor.length>0;
+      }
     }
     setTimeout(() => {
       this.runTimer();

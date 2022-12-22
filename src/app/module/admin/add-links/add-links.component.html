@@ -1,0 +1,29 @@
+<div class="container-fluid">
+    <form #f="ngForm" class="row" (ngSubmit)="onFormSubmit(f)">
+        <div class="col-md-4 mb-3">
+            <input name="title" placeholder="title" [(ngModel)]="model.title" type="text" class="form-control">
+        </div>
+        <div class="col-md-4 mb-3">
+            <input name="link" placeholder="link" [(ngModel)]="model.link" type="text" class="form-control">
+        </div>
+        <div class="col-md-4 mb-3">
+            <input type="file" (change)="onFileChange($event)" class="form-control">
+        </div>
+        <div class="col-md-4 mb-3">
+            <input name="description" placeholder="description" [(ngModel)]="model.description" type="text" class="form-control">
+        </div>
+        
+        <div class="col-md-4 mb-3">
+            <input name="from" placeholder="from" [(ngModel)]="model.from" type="number" class="form-control">
+        </div>
+        <div class="col-md-4 mb-3">
+            <input name="to" placeholder="to" [(ngModel)]="model.to" type="number" class="form-control">
+        </div>
+        <input type="hidden" [(ngModel)]="model.linkPreviewImage">
+        <div class="col-md-12 mb-3">
+            <div class="btn btn-primary">Video censor</div>
+            <button class="btn btn-default ml-3" type="submit">Add to list</button>
+        </div>
+    </form>
+
+</div>

@@ -1,13 +1,19 @@
 <div class="container-fluid">
  <div class="position-relative video-container w-100" *ngIf="_video">
-    <video #playerVideo >
+    <video #playerVideo [ngClass]="{'blur':isBlur}">
         <source
             [src]="baseUrl+_video?.video?.filePath"
             >
     </video>
     <div class="hover-links">
         <div *ngFor="let l of filteredLinks">
-            <a [href]="l.link">Some click here</a>
+            <a [href]="l.link" target="_blank">
+                <img [src]="baseUrl+l.preview_image" alt="" height="50" width="50">
+                <br>
+                {{l.title}}
+                <br>
+                {{l.description}}
+            </a>
         </div>
     </div>
     <div class="position-absolute video-cover w-100" (click)="playPause()"></div>

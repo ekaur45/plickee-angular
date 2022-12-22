@@ -8,6 +8,8 @@ import { NoAccessComponent } from './no-access/no-access.component';
 import { AddVideoComponent } from './add-video/add-video.component';
 import { ListVideoComponent } from './list-video/list-video.component';
 import { SharedModule } from '../shared/shared.module';
+import { AddCensorComponent } from './add-censor/add-censor.component';
+import { AddLinksComponent } from './add-links/add-links.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { SharedModule } from '../shared/shared.module';
     DashboardComponent,
     NoAccessComponent,
     AddVideoComponent,
-    ListVideoComponent
+    ListVideoComponent,
+    AddCensorComponent,
+    AddLinksComponent
   ],
   imports: [
     CommonModule,
