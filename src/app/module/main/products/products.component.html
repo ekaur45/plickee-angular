@@ -72,54 +72,13 @@
           </div>
         </div>
       </div>
-      <div id="w-node-_66d95374-6f1a-4549-2df5-7ed3eeb5df76-ef1e9f48" class="product-card"><img src="images/Rectangle-34624457.png" loading="lazy" alt="" class="product-image">
-        <div class="product-name">Vera Bradley Purse</div>
+      <div *ngFor="let p of products"  class="product-card" ><img [src]="u+p.preview_image" loading="lazy" alt="" class="product-image">
+        <div class="product-name">{{p.title}}</div>
         <div class="price-text">$61</div>
-        <div class="product-description">100% Polyester, Imported, Machine washable microfiber Top quality sutff used in it</div>
-        <a href="#" class="product-button w-button">Visit site</a>
+        <div class="product-description">{{p.description}}</div>
+        <a target="_blank" [href]="p.link" class="product-button w-button">Visit site</a>
       </div>
-      <div id="w-node-_6fa665eb-fc86-0e48-2958-ee456d94d154-ef1e9f48" class="product-card"><img src="images/Rectangle-34624457.png" loading="lazy" alt="" class="product-image">
-        <div class="product-name">Vera Bradley Purse</div>
-        <div class="price-text">$61</div>
-        <div class="product-description">100% Polyester, Imported, Machine washable microfiber Top quality sutff used in it</div>
-        <a href="#" class="product-button w-button">Visit site</a>
-      </div>
-      <div id="w-node-_4da9acf0-3bfc-f6b6-98d4-1ec0a2c4fef8-ef1e9f48" class="product-card"><img src="images/Rectangle-34624457.png" loading="lazy" alt="" class="product-image">
-        <div class="product-name">Vera Bradley Purse</div>
-        <div class="price-text">$61</div>
-        <div class="product-description">100% Polyester, Imported, Machine washable microfiber Top quality sutff used in it</div>
-        <a href="#" class="product-button w-button">Visit site</a>
-      </div>
-      <div id="w-node-_8d327708-b64e-f3a2-19d2-a94a7da3d65a-ef1e9f48" class="product-card"><img src="images/Rectangle-34624457.png" loading="lazy" alt="" class="product-image">
-        <div class="product-name">Vera Bradley Purse</div>
-        <div class="price-text">$61</div>
-        <div class="product-description">100% Polyester, Imported, Machine washable microfiber Top quality sutff used in it</div>
-        <a href="#" class="product-button w-button">Visit site</a>
-      </div>
-      <div id="w-node-_96d0ca32-4ef0-189b-9bd8-4ab0dd047a62-ef1e9f48" class="product-card"><img src="images/Rectangle-34624457.png" loading="lazy" alt="" class="product-image">
-        <div class="product-name">Vera Bradley Purse</div>
-        <div class="price-text">$61</div>
-        <div class="product-description">100% Polyester, Imported, Machine washable microfiber Top quality sutff used in it</div>
-        <a href="#" class="product-button w-button">Visit site</a>
-      </div>
-      <div id="w-node-_9d49060f-df37-1824-6fab-4c32b74d2d08-ef1e9f48" class="product-card"><img src="images/Rectangle-34624457.png" loading="lazy" alt="" class="product-image">
-        <div class="product-name">Vera Bradley Purse</div>
-        <div class="price-text">$61</div>
-        <div class="product-description">100% Polyester, Imported, Machine washable microfiber Top quality sutff used in it</div>
-        <a href="#" class="product-button w-button">Visit site</a>
-      </div>
-      <div id="w-node-_344f57d0-aecc-4f8a-ae77-9cbc2a877bdc-ef1e9f48" class="product-card"><img src="images/Rectangle-34624457.png" loading="lazy" alt="" class="product-image">
-        <div class="product-name">Vera Bradley Purse</div>
-        <div class="price-text">$61</div>
-        <div class="product-description">100% Polyester, Imported, Machine washable microfiber Top quality sutff used in it</div>
-        <a href="#" class="product-button w-button">Visit site</a>
-      </div>
-      <div id="w-node-_1df6bb89-e42f-5fa4-061e-d3784c071176-ef1e9f48" class="product-card"><img src="images/Rectangle-34624457.png" loading="lazy" alt="" class="product-image">
-        <div class="product-name">Vera Bradley Purse</div>
-        <div class="price-text">$61</div>
-        <div class="product-description">100% Polyester, Imported, Machine washable microfiber Top quality sutff used in it</div>
-        <a href="#" class="product-button w-button">Visit site</a>
-      </div>
+ 
     </div>
     <div class="w-embed"></div>
   </div>

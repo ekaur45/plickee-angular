@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path:'',loadChildren:()=>import("./../main/main.module").then(e=>{      
       return e.MainModule
-    }),canActivate:[AuthGuard]
+    })
   },
   {
     path:'admin',loadChildren:()=>import('./../admin/admin.module').then(m=>{

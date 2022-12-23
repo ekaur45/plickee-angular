@@ -12,14 +12,12 @@ export class AdminGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      // let user:any = localStorage.getItem("user");
-      // if(user){
-      //   user = JSON.parse(user);
-      //   if(user.role == 'admin'){
-      //     return true;
-      //   }
-      // }
-      // this.router.navigate(['/admin/no-access']);
+      let user:any = localStorage.getItem("user");
+      if(user){
+        user = JSON.parse(user);
+          return true;
+      }
+      this.router.navigate(['/admin/no-access']);
     return true;
   }
   
