@@ -23,7 +23,7 @@ jobs:
           npm install          
       - name: zip folder
         run: |
-          ng build --prod
+          /usr/bin/ng build --prod
           zip -r /var/www/temp/data.zip dist/
           
         
