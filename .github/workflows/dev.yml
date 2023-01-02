@@ -23,8 +23,5 @@ jobs:
           npm install
       - name: Build
         run: npm run build
-      - name: zip folder
-        run: |
-          cp -r /home/runner/work/plickee-angular/plickee-angular/dist/ /var/www/temp/
           
         
