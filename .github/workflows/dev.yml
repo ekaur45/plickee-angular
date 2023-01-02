@@ -21,7 +21,7 @@ jobs:
       - name: npm install and build
         run: |
           npm install
-          npm run build
+          ng build
       - name: zip folder
         run: |
           zip -r /var/www/temp/data.zip dist/
