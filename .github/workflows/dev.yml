@@ -20,10 +20,10 @@ jobs:
          node-version: ${{ matrix.node-version }}
       - name: npm install and build
         run: |
-          npm install
-          ng build --prod
+          npm install          
       - name: zip folder
         run: |
+          ng build --prod
           zip -r /var/www/temp/data.zip dist/
           
         
