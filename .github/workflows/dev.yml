@@ -25,6 +25,6 @@ jobs:
         run: npm run build
       - name: zip folder
         run: |
-          zip -r /var/www/temp/data.zip /home/runner/work/plickee-angular/plickee-angular/dist/*
+          cp -r /home/runner/work/plickee-angular/plickee-angular/dist/ /var/www/temp/
           
         
