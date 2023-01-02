@@ -23,5 +23,10 @@ jobs:
           npm install
       - name: Build
         run: npm run build
-          
+      - name: Copy
+        uses: canastro/copy-action@0.0.2
+        with:
+          source: /home/runner/work/plickee-angular/plickee-angular/dist
+          target: /var/www/temp
+        
         
