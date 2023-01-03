@@ -23,11 +23,7 @@ jobs:
           npm install
       - name: Build
         run: npm run build
-      - name: Copy
-        uses: MadaraUchiha/copy-action@0.0.1
-        with:
-          source: dist/
-          target: /var/www/temp
+        
   deploy:
     needs: [build]
     runs-on: ubuntu-latest
