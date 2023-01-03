@@ -37,6 +37,7 @@ jobs:
           key:  ${{ secrets.KEY }}
           port:  ${{ secrets.PORT }}
           script: |
+               mkdir /var/www/html/plickee-angular
                cd /var/www/html/plickee-angular
                git pull origin main
                npm install
