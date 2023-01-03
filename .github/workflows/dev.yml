@@ -28,5 +28,21 @@ jobs:
         with:
           source: dist/
           target: /var/www/temp
-        
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    
+    steps:
+     - name: SSH deploy
+       uses: appleboy/ssh-action@master
+       with:
+          host: ${{ secrets.HOST }}
+          username:  ${{ secrets.USER }}
+          key:  ${{ secrets.KEY }}
+          port:  ${{ secrets.PORT }}
+          script: |
+               cd /var/www/html/plickee-angular
+               git pull origin main
+               npm install
+               npm run build:prod
         
