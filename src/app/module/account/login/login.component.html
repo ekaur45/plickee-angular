@@ -17,11 +17,12 @@
                         </div>
 
                         <div class="sign-info">
-                           <button type="submit" class="btn btn-hover">Sign in</button>
+                           
                            <div class="custom-control custom-checkbox d-inline-block">
                               <input type="checkbox" class="custom-control-input" id="customCheck">
                               <label class="custom-control-label" for="customCheck">Remember Me</label>
                            </div>
+                           <button type="submit" class="btn btn-hover">Sign in</button>
                         </div>
 
                      </form>
@@ -44,8 +45,8 @@
 <div class="signup-hero-section wf-section">
    <div class="signup-grid">
       <div id="w-node-_1dffa489-0ffb-0a4d-f604-84daab8e32cd-d63511c3" class="create-div"><img
-            src="images/Asset-24x-8.png" loading="lazy"
-            srcset="images/Asset-24x-8.png 500w, images/Asset-24x-8.png 898w"
+            src="./../../../../assets/images/Asset-24x-8.png" loading="lazy"
+            srcset="./../../../../assets/images/Asset-24x-8.png 500w, ./../../../../assets/images/Asset-24x-8.png 898w"
             sizes="(max-width: 479px) 116.0625px, (max-width: 767px) 24vw, 130px" alt="" class="logo">
          <div class="w-embed">
             <style>
@@ -75,29 +76,37 @@
          <h1 class="h2">Log In to watch on <br>Plickee</h1>
       </div>
       <div id="w-node-_85320b86-ad80-d49d-0e32-6c1f977948d4-d63511c3" class="form-div">
-         <h2 class="h2-lg">Sign In</h2>
+         <h2 class="h2-lg">Sign in</h2>
          <div class="form-block-2 w-form">
+
             <form id="email-form" name="email-form" data-name="Email Form" #f="ngForm" (ngSubmit)="f.valid&&onLoginClick()">
                <label for="name"
                   class="input-text">Email</label>
                   <input type="email" class="sign-input email w-input" maxlength="256"
-                  name="email" data-name="email" placeholder="Johndoe@gmail.com" id="name" [(ngModel)]="model.email" required="">
+                  name="email" data-name="email" placeholder="Johndoe@gmail.com" id="Email" [(ngModel)]="model.email" required="">
                   <!-- <input type="email" name="email" [(ngModel)]="model.email" required lass="sign-input email w-input"
                               id="exampleInputEmail1" placeholder="Enter email" autocomplete="off" required> -->
                <div>
                   <label for="name-2" class="input-text">Password</label>
                   <input type="password"
                      class="sign-input psd w-input" [(ngModel)]="model.password" required maxlength="256" name="name-2" data-name="Name 2"
-                     placeholder="****************" id="name-2"><label for="name-3" class="input-text forgot">Forgot
-                     Passowrd?</label></div>
-               <div class="agree-div">
-                  <div class="agree-circle"></div><label for="email-3" class="input-text terms">Remember Me</label>
+                     placeholder="****************" id="name-2">
+                     <label for="name-3" class="input-text forgot"> <span style="cursor: pointer;" routerLink="/account/reset">Forgot
+                     Passowrd?</span></label>
+                  </div>
+               <div class="agree-div">                                            
+                  <label class="containerW"> <span class="input-text terms">Remember Me</span> 
+                     <input type="checkbox" checked="checked">
+                     <span class="checkmark"></span>
+                   </label>                  
                </div>
-               <div class="button-div"><input type="submit" value="Sign In" data-wait="Please wait..."
-                     class="submit-btn w-button"></div><label for="email-3" class="input-text already">Don’t have an
+               <div class="button-div sta"><input type="submit" value="Sign in" data-wait="Please wait..." 
+                  class="submit-btn w-button"></div>       
+                     <label for="email-3" class="input-text already">Don’t have an
                   account?
-                  <a href="#" class="input-text">Sign Up</a></label>
+                  <span routerLink="/account/create" class="input-textBold">Sign up</span></label>
             </form>
+
             <div class="w-form-done">
                <div>Thank you! Your submission has been received!</div>
             </div>

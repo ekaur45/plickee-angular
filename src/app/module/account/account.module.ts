@@ -7,13 +7,17 @@ import { LoginComponent } from './login/login.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
+import { VerficationComponent } from './verfication/verfication.component';
+import { ResetComponent } from './reset/reset.component';
 
 
 @NgModule({
   declarations: [
     IndexComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    VerficationComponent,
+    ResetComponent
   ],
   imports: [
     CommonModule,

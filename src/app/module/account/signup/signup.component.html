@@ -66,8 +66,8 @@
 <div class="signup-hero-section wf-section">
    <div class="signup-grid">
       <div id="w-node-_1dffa489-0ffb-0a4d-f604-84daab8e32cd-68aaeaf9" class="create-div"><img
-            src="images/Asset-24x-8.png" loading="lazy"
-            srcset="images/Asset-24x-8.png 500w, images/Asset-24x-8.png 898w"
+            src="./../../../../assets/images/Asset-24x-8.png" loading="lazy"
+            srcset="./../../../../assets/images/Asset-24x-8.png 500w, ./../../../../assets/images/Asset-24x-8.png 898w"
             sizes="(max-width: 479px) 126.6624984741211px, (max-width: 767px) 26vw, (max-width: 991px) 19vw, 150px"
             alt="" class="logo">
          <div class="w-embed">
@@ -100,45 +100,37 @@
       <div id="w-node-_85320b86-ad80-d49d-0e32-6c1f977948d4-68aaeaf9" class="form-div">
          <h2 class="h2-lg">Sign up</h2>
          <div id="w-node-_1acfff40-71c8-ad47-94c8-a09a097bfb81-68aaeaf9" class="form-block-2 w-form">
-            <form id="email-form" name="email-form" data-name="Email Form" #f="ngForm" (ngSubmit)="f.valid&&onPersonalInfoClick(f)">
+          
+            <form id="email-form" name="email-form" data-name="Email Form" method="get" #f="ngForm" (ngSubmit)="f.valid&&onPersonalInfoClick(f)">
                <label for="name" class="input-text">Email</label>
-               <input type="text" class="sign-input w-input" maxlength="256" [(ngModel)]="model.personalInfo.email" name="email" data-name="Name"
-                  placeholder="Johndoe@gmail.com" id="name">
-               <!-- <label for="phone" class="input-text">Mobile
-                  Number</label>
-               <input type="tel" class="sign-input phone w-input" maxlength="256" name="phone" data-name="phone"
-                  placeholder="+92 31111 123 123" id="phone" required=""> -->
-               <div class="name-wrapper">
-                  <div class="name-div">
-                     <label for="First-Name" class="input-text">First Name</label>
-                     <input type="email" class="sign-input name-wrapper w-input" maxlength="256" [(ngModel)]="model.personalInfo.firstName" name="firstName"
-                        data-name="First  Name" placeholder="John" id="firstName" required="">
+               <input type="text" class="sign-input w-input" maxlength="256" [(ngModel)]="model.personalInfo.email" name="name" data-name="Name" placeholder="Johndoe@gmail.com" id="name">
+               <label for="phone" class="input-text">Mobile Number</label>
+               <input type="tel" class="sign-input phone w-input" maxlength="256" name="phone" data-name="phone" placeholder="+92 31111 123 123" id="phone" required="">
+                 <div class="name-wrapper">
+                   <div class="name-div">
+                   <label for="First-Name" class="input-text">First Name</label>
+                   <input type="email" class="sign-input name-wrapper w-input" maxlength="256" [(ngModel)]="model.personalInfo.firstName" name="First-Name" data-name="First  Name" placeholder="John" id="First-Name" required="">
+                   </div>
+                   <div class="name-div last"><label for="Last-Name" class="input-text">Last Name</label>
+                  <input type="email" class="sign-input l-name w-input" maxlength="256" [(ngModel)]="model.personalInfo.lastName" name="Last-Name" data-name="Last Name" placeholder="Doe" id="Last-Name" required="">
                   </div>
-                  <div class="name-div last">
-                     <label for="Last-Name" class="input-text">Last Name</label>
-                     <input
-                        type="email" class="sign-input l-name w-input" maxlength="256" name="lastName"
-                        data-name="Last Name" placeholder="Doe" id="lastName" required=""
-                        [(ngModel)]="model.personalInfo.lastName" required
-                        >
-                  </div>
-               </div>
-               <label for="Password" class="input-text">Password</label>
-               <input type="password" class="sign-input password w-input" maxlength="256" name="password"
-                  data-name="Password" placeholder="****************" id="Password" [(ngModel)]="model.personalInfo.password">
-               <div class="agree-div">
-                  <div class="agree-circle">
-
-                  </div>
-                  <label for="email-3" class="input-text terms">I agree to the terms &amp;
-                     conditions</label>
-               </div>
-               <div class="button-div">
-                  <input type="submit" value="Signup" data-wait="Please wait..." class="submit-btn w-button">
-               </div>
-               <label for="email-3" class="input-text already">Already have an
-                  account? <a routerLink="/account" class="input-text">Sign In</a></label>
-            </form>
+                 </div>
+                <label for="Password" class="input-text">Password</label>
+                <input type="text" class="sign-input password w-input" maxlength="256" [(ngModel)]="model.personalInfo.password" name="Password" data-name="Password" placeholder="****************" id="Password">
+                 <div class="agree-div">                  
+                  <label class="containerW"> 
+                     <span class="input-text terms">I agree to the terms &amp; conditions</span> 
+                     <input type="checkbox" checked="checked">
+                     <span class="checkmark"></span>
+                   </label>                     
+                 </div>
+                 <div class="button-div sta">
+                 <input type="submit" value="Sign up" data-wait="Please wait..." class="submit-btn w-button">
+                </div>
+               <label for="email-3" class="input-text already">Already have an account? <span routerLink="/account" class="input-textBold">Sign in</span>
+               </label>
+               </form>
+   
             <div class="w-form-done">
                <div>Thank you! Your submission has been received!</div>
             </div>

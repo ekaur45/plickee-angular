@@ -248,7 +248,10 @@ body {
   color: #64748b;
   font-size: 16px;
 }
-
+.mar-col{
+  margin-bottom: 6px;
+  background: transparent;
+}
 .sm-text.right-bar {
   margin-left: 50px;
 }
@@ -818,6 +821,12 @@ body {
   font-weight: 600;
 }
 
+.input-textBold {
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .sign-input {
   width: 500px;
   height: 32px;
@@ -971,6 +980,20 @@ body {
   margin-right: 30px;
   border: 1px solid #64748b;
   border-radius: 9px;
+  background: transparent;  
+}
+
+.get-code-input{
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  color: white;
+  font-size: 3em;
+  text-align: center;
+  margin-top: 18%;
+  margin-left: 17%;
+  border: transparent;
+  outline: none;
 }
 
 .input-txt {
@@ -3377,7 +3400,8 @@ body {
   }
 
   .h2 {
-    font-size: 42px;
+    font-size: 42px;  
+    font-weight: 600;
   }
 
   .h2-lg {

@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './index.component';
 import { LoginComponent } from './login/login.component';
+import { ResetComponent } from './reset/reset.component';
 import { SignupComponent } from './signup/signup.component';
+import { VerficationComponent } from './verfication/verfication.component';
 
 const routes: Routes = [
   {
@@ -12,6 +14,12 @@ const routes: Routes = [
       },
       {
         path:'create',component:SignupComponent
+      },
+      {
+        path:'verification', component: VerficationComponent
+      },
+      {
+        path:'reset',component:ResetComponent
       }
     ]
   }
