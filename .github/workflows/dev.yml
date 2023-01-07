@@ -43,5 +43,5 @@ jobs:
                cd /var/www/html/plickee-angular
                git pull origin main
                npm install
-               npm run build:prod
+               npm run build
         
