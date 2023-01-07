@@ -3,6 +3,240 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ApiService } from '../../shared/api.service';
 import { VideoPlayer } from './video-model';
+import {default as lottieWeb} from 'lottie-web';
+declare const $:any;
+const everything = function(element:any) { 
+  const shadow = element;
+
+    const audioPlayerContainer = element.querySelector('#audio-player-container');
+    const playIconContainer = element.querySelector('#play-icon');
+    const seekSlider = element.querySelector('#seek-slider');
+    const volumeSlider = element.querySelector('#volume-slider');
+    const muteIconContainer = element.querySelector('#mute-icon');
+    const audio = shadow.querySelector('video');
+    const durationContainer = element.querySelector('#duration');
+    const currentTimeContainer = element.querySelector('#current-time');
+    const outputContainer = element.querySelector('#volume-output');
+    let playState = 'play';
+    let muteState = 'unmute';
+    let raf:any = null;
+
+    //audio.src = element.getAttribute('data-src');
+
+    // const playAnimation = lottieWeb.loadAnimation({
+    //     container: playIconContainer,
+    //     path: 'https://assets10.lottiefiles.com/packages/lf20_6vmErDSRUk.json',
+    //     renderer: 'svg',
+    //     loop: false,
+    //     autoplay: false,
+    //     name: "Play Animation",
+    // });
+          
+    // const muteAnimation = lottieWeb.loadAnimation({
+    //     container: muteIconContainer,
+    //     path: 'https://assets5.lottiefiles.com/packages/lf20_30WwocmejE.json',
+    //     renderer: 'svg',
+    //     loop: false,
+    //     autoplay: false,
+    //     name: "Mute Animation",
+    // });
+          
+    //playAnimation.goToAndStop(14, true);
+
+    const whilePlaying = () => {
+        seekSlider.value = Math.floor(audio.currentTime);
+        currentTimeContainer.textContent = calculateTime(seekSlider.value);
+        audioPlayerContainer.style.setProperty('--seek-before-width', `${seekSlider.value / seekSlider.max * 100}%`);
+        raf = requestAnimationFrame(whilePlaying);
+    }
+
+    const showRangeProgress = (rangeInput:any) => {
+        if(rangeInput === seekSlider) audioPlayerContainer.style.setProperty('--seek-before-width', rangeInput.value / rangeInput.max * 100 + '%');
+        else audioPlayerContainer.style.setProperty('--volume-before-width', rangeInput.value / rangeInput.max * 100 + '%');
+    }
+
+    const calculateTime = (secs:any) => {
+        const minutes = Math.floor(secs / 60);
+        const seconds = Math.floor(secs % 60);
+        const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+        return `${minutes}:${returnedSeconds}`;
+    }
+        
+    const displayDuration = () => {
+        durationContainer.textContent = calculateTime(audio.duration);
+    }
+        
+    const setSliderMax = () => {
+        seekSlider.max = Math.floor(audio.duration);
+    }
+        
+    const displayBufferedAmount = () => {
+        //const bufferedAmount = Math.floor(audio.buffered.end(audio.buffered.length - 1));
+        //audioPlayerContainer.style.setProperty('--buffered-width', `${(bufferedAmount / seekSlider.max) * 100}%`);
+    }
+
+    if (audio.readyState > 0) {
+        displayDuration();
+        setSliderMax();
+        displayBufferedAmount();
+    } else {
+        audio.addEventListener('loadedmetadata', () => {
+            displayDuration();
+            setSliderMax();
+            displayBufferedAmount();
+        });
+    }
+
+    playIconContainer.addEventListener('click', () => {
+        if(playState === 'play') {
+            audio.play();
+            //playAnimation.playSegments([14, 27], true);
+            $("#play-icon").html('<i id="p-play" class="bi bi-pause"></i>')
+            requestAnimationFrame(whilePlaying);
+            playState = 'pause';
+          } else {
+            audio.pause();
+            $("#play-icon").html('<i id="p-play" class="bi bi-play"></i>')
+            //playAnimation.playSegments([0, 14], true);
+            cancelAnimationFrame(raf);
+            playState = 'play';
+        }
+    });
+        
+    muteIconContainer.addEventListener('click', () => {
+        if(muteState === 'unmute') {
+            //muteAnimation.playSegments([0, 15], true);
+            audio.muted = true;
+            $("#mute-icon").html('<i id="p-volume" class="bi bi-volume-mute"></i>')
+            muteState = 'mute';
+        } else {
+            //muteAnimation.playSegments([15, 25], true);
+            $("#mute-icon").html('<i id="p-volume" class="bi bi-volume-down"></i>')
+            audio.muted = false;
+            muteState = 'unmute';
+        }
+    });
+
+    audio.addEventListener('progress', displayBufferedAmount);
+
+    seekSlider.addEventListener('input', (e:any) => {
+        showRangeProgress(e.target);
+        currentTimeContainer.textContent = calculateTime(seekSlider.value);
+        if(!audio.paused) {
+            cancelAnimationFrame(raf);
+        }
+    });
+
+    seekSlider.addEventListener('change', () => {
+        audio.currentTime = seekSlider.value;
+        if(!audio.paused) {
+            requestAnimationFrame(whilePlaying);
+        }
+    });
+
+    volumeSlider.addEventListener('input', (e:any) => {
+        const value = e.target.value;
+        showRangeProgress(e.target);
+        outputContainer.textContent = value;
+        audio.volume = value / 100;
+        if(audio.volume == 0){
+          $("#mute-icon").html('<i id="p-volume" class="bi bi-volume-mute"></i>');
+        }
+        if(audio.volume >= 0){
+          $("#mute-icon").html('<i id="p-volume" class="bi bi-volume-down"></i>');
+        }
+        if(audio.volume >= 50){
+          $("#mute-icon").html('<i id="p-volume" class="bi bi-volume-up"></i>');
+        }
+    });
+
+    if('mediaSession' in navigator) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+            title: 'Komorebi',
+            artist: 'Anitek',
+            album: 'MainStay',
+            artwork: [
+                { src: 'https://assets.codepen.io/4358584/1.300.jpg', sizes: '96x96', type: 'image/png' },
+                { src: 'https://assets.codepen.io/4358584/1.300.jpg', sizes: '128x128', type: 'image/png' },
+                { src: 'https://assets.codepen.io/4358584/1.300.jpg', sizes: '192x192', type: 'image/png' },
+                { src: 'https://assets.codepen.io/4358584/1.300.jpg', sizes: '256x256', type: 'image/png' },
+                { src: 'https://assets.codepen.io/4358584/1.300.jpg', sizes: '384x384', type: 'image/png' },
+                { src: 'https://assets.codepen.io/4358584/1.300.jpg', sizes: '512x512', type: 'image/png' }
+            ]
+        });
+        navigator.mediaSession.setActionHandler('play', () => {
+            if(playState === 'play') {
+                audio.play();
+                $("#play-icon").html('<i id="p-play" class="bi bi-pause"></i>')
+                //playAnimation.playSegments([14, 27], true);
+                requestAnimationFrame(whilePlaying);
+                playState = 'pause';
+            } else {
+                audio.pause();
+                //playAnimation.playSegments([0, 14], true);
+                $("#play-icon").html('<i id="p-play" class="bi bi-play"></i>')
+                cancelAnimationFrame(raf);
+                playState = 'play';
+            }
+        });
+        navigator.mediaSession.setActionHandler('pause', () => {
+            if(playState === 'play') {
+                audio.play();
+                //playAnimation.playSegments([14, 27], true);
+                $("#play-icon").html('<i id="p-play" class="bi bi-pause"></i>')
+                requestAnimationFrame(whilePlaying);
+                playState = 'pause';
+            } else {
+                audio.pause();
+                //playAnimation.playSegments([0, 14], true);
+                $("#play-icon").html('<i id="p-play" class="bi bi-play"></i>')
+                cancelAnimationFrame(raf);
+                playState = 'play';
+            }
+        });
+        navigator.mediaSession.setActionHandler('seekbackward', (details) => {
+            audio.currentTime = audio.currentTime - (details.seekOffset || 10);
+        });
+        navigator.mediaSession.setActionHandler('seekforward', (details) => {
+            audio.currentTime = audio.currentTime + (details.seekOffset || 10);
+        });
+        navigator.mediaSession.setActionHandler('seekto', (details) => {
+            if (details.fastSeek && 'fastSeek' in audio) {
+              audio.fastSeek(details.seekTime);
+              return;
+            }
+            audio.currentTime = details.seekTime;
+        });
+        navigator.mediaSession.setActionHandler('stop', () => {
+            audio.currentTime = 0;
+            seekSlider.value = 0;
+            audioPlayerContainer.style.setProperty('--seek-before-width', '0%');
+            currentTimeContainer.textContent = '0:00';
+            if(playState === 'pause') {
+                //playAnimation.playSegments([0, 14], true);
+                $("#play-icon").html('<i id="p-play" class="bi bi-play"></i>')
+                cancelAnimationFrame(raf);
+                playState = 'play';
+            }
+        });
+    }
+}
+// class AudioPlayer extends HTMLElement {
+//   constructor() {
+//       super();
+//       const template = document.querySelector('#template');
+//       if(template){
+//         const templateContent = template.childNodes[0];
+//         const shadow = this.attachShadow({mode: 'open'});
+//         shadow.appendChild(templateContent.cloneNode(true));
+//       }
+//   }
+
+//   connectedCallback() {
+//       everything(this);
+//   }
+// }
+
 
 @Component({
   selector: 'app-player',
@@ -23,7 +257,11 @@ export class PlayerComponent implements OnInit, AfterViewInit {
     ar.params.subscribe(x=>{
       if(x["id"]){
         this.id = x["id"];
-        this.getVideo();
+        setTimeout(() => {
+          everything(document.getElementById('template'))
+          //customElements.define('audio-player', AudioPlayer);
+        }, 1);
+        //this.getVideo();
       }
     })
     this.videoPlayer = new VideoPlayer();
@@ -39,11 +277,12 @@ export class PlayerComponent implements OnInit, AfterViewInit {
   }
   getVideo(){
     this.api.getCall("video/video/"+this.id).subscribe((x:any)=>{
-      this.initialize();
+      //this.initialize();
       this.getLinks()
       this.getVideoCensor()
       this._video = x.data;
-      this.runTimer()
+      //customElements.define('audio-player', AudioPlayer);
+      //this.runTimer()
     })
   }
   getLinks(){
