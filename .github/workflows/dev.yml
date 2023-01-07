@@ -1,0 +1,47 @@
+name: node js ci cd learning
+
+on:
+  push:
+    branches:
+        - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use node js
+        uses: actions/setup-node@v1
+        with:
+         node-version: ${{ matrix.node-version }}
+      - name: npm install and build
+        run: |
+          npm install
+      - name: Build
+        run: npm run build
+        
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    
+    steps:
+     - name: SSH deploy
+       uses: appleboy/ssh-action@master
+       with:
+          host: ${{ secrets.HOST }}
+          username:  ${{ secrets.USER }}
+          key:  ${{ secrets.KEY }}
+          port:  ${{ secrets.PORT }}
+          script: |
+               #rm -r /var/www/html/plickee-angular
+               #cd /var/www/html/
+               #git clone https://github.com/ekaur45/plickee-angular.git
+               cd /var/www/html/plickee-angular
+               git pull origin main
+               npm install
+               npm run build
+        
